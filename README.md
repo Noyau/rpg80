@@ -16,11 +16,11 @@ Il y a plusieurs types de NOEUD :
 
 - NARRATION : du texte, éventuellement des choix qui mènent à d'autres NOEUDS
 - COMBAT : rencontre avec un ennemi, les sorties peuvent être :
- * VICTOIRE
- * DÉFAITE
- * FUITE
- * INCONSCIENT
- * CAPTURE
+  * VICTOIRE
+  * DÉFAITE
+  * FUITE
+  * INCONSCIENT
+  * CAPTURE
 - DIALOGUE : rencontre avec personnage, les choix sont multiples et peuvent mener à plusieurs NOEUDS
 
 ## Combats ##
