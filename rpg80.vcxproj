@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="src\core\Log.h" />
     <ClInclude Include="src\core\Memory.h" />
+    <ClInclude Include="src\core\Format.h" />
     <ClInclude Include="src\engine\Application.h" />
     <ClInclude Include="src\engine\Window.h" />
     <ClInclude Include="src\gameplay\dialogue\Edge.h" />

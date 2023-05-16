@@ -21,16 +21,16 @@ class AppNodeVisitor : public NodeVisitor
 public:
     void Display(const CombatNode& node) const override
     {
-        std::cout << "[" << node.m_EnemyName << "]\n";
-        std::cout << "   " << node.m_EnemyDescription << "\n";
-        std::cout << "-> " << node.m_EnemyText;
+        std::cout << Format("[{}]\n", node.m_EnemyName);
+        std::cout << Format("   {}", node.m_EnemyDescription);
+        std::cout << Format("-> {}", node.m_EnemyText);
         std::cout << std::endl;
     }
 
     void Display(const DialogueNode& node) const override
     {
-        std::cout << "[" << node.m_CharacterName << "] (" << node.m_CharacterDescription << ")\n";
-        std::cout << "[" << node.m_CharacterName << "] " << node.m_CharacterText;
+        std::cout << Format("[{}] ({})\n", node.m_CharacterName, node.m_CharacterDescription);
+        std::cout << Format("[{}] {}", node.m_CharacterName, node.m_CharacterText);
         std::cout << std::endl;
     }
 

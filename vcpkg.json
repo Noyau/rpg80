@@ -3,6 +3,7 @@
   "dependencies": [
     "glfw3",
     "glew",
-    "spdlog"
+    "spdlog",
+    "fmt"
   ]
 }
