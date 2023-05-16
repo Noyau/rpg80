@@ -15,4 +15,7 @@
 #include <functional>
 #include <ranges>
 
+#include <imgui.h>
+#include <imgui_internal.h>
+
 #include "core/Memory.h"
