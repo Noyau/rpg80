@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "Application.h"
 
+#include "engine/Layer.h"
 #include "engine/Window.h"
+
+#include "engine/imgui/ImGuiLayer.h"
 
 #include "gameplay/dialogue/Edge.h"
 #include "gameplay/dialogue/Node.h"
@@ -47,13 +50,25 @@ int Application::Run()
 {
     if (const auto window = Window::Create(WindowArgs{ 800, 600, "RPG-80" }))
     {
+        m_ImGuiLayer = AddLayer<ImGuiLayer>();
+
         while (!window->ShouldClose())
         {
+            std::ranges::for_each(m_Layers, &Layer::Update);
+
             window->Update();
         }
+
+        std::ranges::for_each(m_Layers, &Layer::Shutdown);
+
+        m_Layers.clear();
+
         return EXIT_SUCCESS;
     }
 
+    return EXIT_FAILURE;
+
+#if false
     // Set console code page to UTF-8 so console known how to interpret string data
     //SetConsoleOutputCP(CP_UTF8);
 
@@ -155,4 +170,24 @@ int Application::Run()
     LOG_INFO("À bientôt.");
 
     return EXIT_SUCCESS;
+#endif
+}
+
+const SharedPtr<Layer>& Application::AddLayer(SharedPtr<Layer>&& layer)
+{
+    const auto& addedLayer = m_Layers.emplace_back(std::move(layer));
+
+    addedLayer->Initialize();
+
+    return addedLayer;
+}
+
+void Application::RemoveLayer(const SharedPtr<Layer>& layer)
+{
+    if (const auto it = std::ranges::remove(m_Layers, layer).begin(); it != m_Layers.end())
+    {
+        (*it)->Shutdown();
+
+        m_Layers.erase(it);
+    }
 }

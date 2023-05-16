@@ -167,6 +167,8 @@
     <ClInclude Include="src\core\Memory.h" />
     <ClInclude Include="src\core\Format.h" />
     <ClInclude Include="src\engine\Application.h" />
+    <ClInclude Include="src\engine\imgui\ImGuiLayer.h" />
+    <ClInclude Include="src\engine\Layer.h" />
     <ClInclude Include="src\engine\opengl\GraphicsContext.h" />
     <ClInclude Include="src\engine\opengl\GraphicsFramework.h" />
     <ClInclude Include="src\engine\opengl\OpenGL.h" />
@@ -179,6 +181,7 @@
   <ItemGroup>
     <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\engine\Application.cpp" />
+    <ClCompile Include="src\engine\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\engine\opengl\GraphicsContext.cpp" />
     <ClCompile Include="src\engine\opengl\GraphicsFramework.cpp" />
     <ClCompile Include="src\engine\Window.cpp" />
