@@ -26,6 +26,9 @@ public:
 
     bool ShouldClose() const;
 
+    void InitializeImGui() const;
+    void ShutdownImGui() const;
+
     void Update();
 
 private:

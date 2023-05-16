@@ -3,6 +3,8 @@
 
 #include "engine/Window.h"
 
+static constexpr const char* GlslVersion{ "#version 430 core" };
+
 // Graphics Context
 GraphicsContext::GraphicsContext(const WindowArgs& args)
     : m_Window(glfwCreateWindow(args.m_Width, args.m_Height, args.m_Title.c_str(), nullptr, nullptr))
@@ -51,6 +53,19 @@ GraphicsContext::~GraphicsContext()
     glfwMakeContextCurrent(nullptr);
     glfwSetWindowUserPointer(m_Window, nullptr);
     glfwDestroyWindow(m_Window);
+}
+
+void GraphicsContext::InitializeImGui() const
+{
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
+    ImGui_ImplOpenGL3_Init(GlslVersion);
+}
+
+void GraphicsContext::ShutdownImGui() const
+{
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
 }
 
 bool GraphicsContext::ShouldClose() const

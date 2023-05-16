@@ -13,12 +13,12 @@
 // Application
 Application::Application(int argc, char** argv)
 {
-
+    s_Instance = this;
 }
 
 Application::~Application()
 {
-
+    s_Instance = nullptr;
 }
 
 class AppNodeVisitor : public NodeVisitor
@@ -48,15 +48,15 @@ public:
 
 int Application::Run()
 {
-    if (const auto window = Window::Create(WindowArgs{ 800, 600, "RPG-80" }))
+    if (m_Window = Window::Create(WindowArgs{ 800, 600, "RPG-80" }); m_Window != nullptr)
     {
         m_ImGuiLayer = AddLayer<ImGuiLayer>();
 
-        while (!window->ShouldClose())
+        while (!m_Window->ShouldClose())
         {
             std::ranges::for_each(m_Layers, &Layer::Update);
 
-            window->Update();
+            m_Window->Update();
         }
 
         std::ranges::for_each(m_Layers, &Layer::Shutdown);

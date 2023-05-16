@@ -12,6 +12,9 @@ public:
 
     constexpr bool IsInitialized() const { return m_Initialized; }
 
+    void InitializeImGui() const;
+    void ShutdownImGui() const;
+
     bool ShouldClose() const;
 
     void SwapBuffers() const;

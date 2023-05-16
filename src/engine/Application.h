@@ -1,5 +1,7 @@
 #pragma once
 
+#include "engine/Window.h"
+
 class ImGuiLayer;
 class Layer;
 
@@ -19,7 +21,16 @@ public:
     template<typename T, typename... Args>
     SharedPtr<T> AddLayer(Args&&... args);
 
+    Window* GetWindow() const { return m_Window.get(); }
+
+public:
+    static Application& Get() { return *s_Instance; }
+
 private:
+    static inline Application* s_Instance{ nullptr };
+
+private:
+    UniquePtr<Window> m_Window;
     SharedPtr<ImGuiLayer> m_ImGuiLayer;
     std::vector<SharedPtr<Layer>> m_Layers;
 };

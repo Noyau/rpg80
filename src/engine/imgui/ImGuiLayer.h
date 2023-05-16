@@ -10,4 +10,7 @@ public:
     void Shutdown() override;
 
     void Update() override;
+
+private:
+    void Render();
 };

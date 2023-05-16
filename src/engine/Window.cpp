@@ -33,6 +33,16 @@ bool Window::ShouldClose() const
     return m_Context->ShouldClose();
 }
 
+void Window::InitializeImGui() const
+{
+    m_Context->InitializeImGui();
+}
+
+void Window::ShutdownImGui() const
+{
+    m_Context->ShutdownImGui();
+}
+
 void Window::Update()
 {
     m_Context->SwapBuffers();
