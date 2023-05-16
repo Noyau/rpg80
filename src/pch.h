@@ -17,6 +17,8 @@
 #include <functional>
 #include <ranges>
 
+#include <source_location>
+
 // OpenGL
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -31,3 +33,7 @@
 #include "core/Format.h"
 #include "core/Memory.h"
 #include "core/Log.h"
+#include "core/Debug.h"
+
+// Engine
+#include "engine/opengl/OpenGL.h"

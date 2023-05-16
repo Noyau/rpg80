@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Application.h"
 
+#include "engine/Window.h"
+
 #include "gameplay/dialogue/Edge.h"
 #include "gameplay/dialogue/Node.h"
 #include "gameplay/dialogue/Tree.h"
@@ -43,6 +45,15 @@ public:
 
 int Application::Run()
 {
+    if (const auto window = Window::Create(WindowArgs{ 800, 600, "RPG-80" }))
+    {
+        while (!window->ShouldClose())
+        {
+            window->Update();
+        }
+        return EXIT_SUCCESS;
+    }
+
     // Set console code page to UTF-8 so console known how to interpret string data
     //SetConsoleOutputCP(CP_UTF8);
 
