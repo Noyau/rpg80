@@ -28,3 +28,4 @@
 #include <imgui_impl_opengl3.h>
 
 #include "core/Memory.h"
+#include "core/Log.h"

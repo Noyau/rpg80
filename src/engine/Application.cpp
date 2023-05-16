@@ -76,12 +76,11 @@ int Application::Run()
         tree.m_Edges.emplace_back(8, 9);
     }
 
-    std::cout << "RPG-80\n";
-    std::cout << "Vous pouvez quitter le programme à tout moment en appuyant sur la touche (plan) 'Q'.\n";
-    std::cout << "(Mais en vrai, faites ALT+F4, on se sens plus puissant quand on a droit de vie ou de mort sur les processus.)\n";
-    std::cout << "Préparez vous à une aventure sans pareil !\n";
-    std::cout << "------------------------------------------\n";
-    std::cout << std::endl;
+    LOG_INFO("RPG-80");
+    LOG_INFO("Vous pouvez quitter le programme à tout moment en appuyant sur la touche (plan) 'Q'.");
+    LOG_INFO("(Mais en vrai, faites ALT+F4, on se sens plus puissant quand on a droit de vie ou de mort sur les processus.)");
+    LOG_INFO("Préparez vous à une aventure sans pareil !");
+    LOG_INFO("------------------------------------------");
 
     bool shouldQuit = false;
 
@@ -141,9 +140,8 @@ int Application::Run()
         }
     } while (!shouldQuit);
 
-    std::cout << "------------------------------------------\n";
-    std::cout << "À bientôt.\n";
-    std::cout << std::endl;
+    LOG_INFO("------------------------------------------");
+    LOG_INFO("À bientôt.");
 
     return EXIT_SUCCESS;
 }

@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Log.h" />
     <ClInclude Include="src\core\Memory.h" />
     <ClInclude Include="src\engine\Application.h" />
     <ClInclude Include="src\engine\Window.h" />
@@ -171,8 +172,8 @@
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\engine\Application.cpp" />
-    <ClCompile Include="src\engine\Window.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

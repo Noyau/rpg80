@@ -4,7 +4,9 @@
 
 int main(int argc, char** argv)
 {
-    auto application = MakeUnique<Application>(argc, argv);
+    Log::Initialize();
+
+    const auto application = MakeUnique<Application>(argc, argv);
 
     return application->Run();
 }
