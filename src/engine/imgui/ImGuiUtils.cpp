@@ -3,6 +3,50 @@
 
 namespace ImGui::Utils
 {
+    // Window
+    Window::Window(bool opened, void(*endCallback)())
+        : m_Opened(opened)
+        , m_EndCallback(endCallback)
+    {}
+
+    Window::~Window()
+    {
+        if (m_EndCallback != nullptr)
+        {
+            m_EndCallback();
+        }
+    }
+
+    // ImGui Scope
+    Scope::Scope(bool hasBegun, void(*endCallback)())
+        : m_EndCallback(hasBegun ? endCallback : nullptr)
+    {}
+
+    Scope::~Scope()
+    {
+        if (m_EndCallback != nullptr)
+        {
+            m_EndCallback();
+        }
+    }
+
+    // Tree Node
+    TreeNode::TreeNode(const char* label)
+        : TreeNode(label, false)
+    {}
+
+    TreeNode::TreeNode(const char* label, bool defaultOpen)
+        : m_Opened(TreeNodeEx(label, TreeNodeFlag(defaultOpen)))
+    {}
+
+    TreeNode::~TreeNode()
+    {
+        if (m_Opened)
+        {
+            TreePop();
+        }
+    }
+
     // Scoped Style Var
     ScopedStyleVar::~ScopedStyleVar()
     {

@@ -30,6 +30,7 @@
 #include <imgui_impl_opengl3.h>
 
 // Core
+#include "core/Utils.h"
 #include "core/Format.h"
 #include "core/Memory.h"
 #include "core/Log.h"
