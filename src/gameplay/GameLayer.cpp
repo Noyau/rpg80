@@ -11,20 +11,20 @@ class GameNodeVisitor : public NodeVisitor
 public:
     void Display(const CombatNode& node) const override
     {
-        ImGui::TextUnformatted(Format("[{}]", node.m_EnemyName).c_str());
-        ImGui::TextUnformatted(Format("   {}", node.m_EnemyDescription).c_str());
-        ImGui::TextUnformatted(Format("-> {}", node.m_EnemyText).c_str());
+        ImGui::TextWrapped(Format("[{}]", node.m_EnemyName).c_str());
+        ImGui::TextWrapped(Format("   {}", node.m_EnemyDescription).c_str());
+        ImGui::TextWrapped(Format("-> {}", node.m_EnemyText).c_str());
     }
 
     void Display(const DialogueNode& node) const override
     {
-        ImGui::TextUnformatted(Format("[{}] ({})\n", node.m_CharacterName, node.m_CharacterDescription).c_str());
-        ImGui::TextUnformatted(Format("[{}] {}", node.m_CharacterName, node.m_CharacterText).c_str());
+        ImGui::TextWrapped(Format("[{}] ({})", node.m_CharacterName, node.m_CharacterDescription).c_str());
+        ImGui::TextWrapped(Format("[{}] {}", node.m_CharacterName, node.m_CharacterText).c_str());
     }
 
     void Display(const NarrativeNode& node) const override
     {
-        ImGui::TextUnformatted(node.m_Text.c_str());
+        ImGui::TextWrapped(node.m_Text.c_str());
     }
 };
 
