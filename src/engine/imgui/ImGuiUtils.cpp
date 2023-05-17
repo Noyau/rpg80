@@ -146,4 +146,123 @@ namespace ImGui::Utils
     {
         End();
     }
+
+    // Menu Item
+    MenuItem::MenuItem(const char* label, bool selected, bool disableOnSelect /*= false*/)
+        : MenuItem(label, "", selected, disableOnSelect)
+    {}
+
+    MenuItem::MenuItem(const char* label, const char* shortcut /*= ""*/, bool selected /*= false*/, bool disableOnSelect /*= false*/)
+        : m_Selected(selected)
+        , m_DisableOnSelect(disableOnSelect)
+        , m_Label(label)
+        , m_Shortcut(shortcut)
+    {}
+
+    void MenuItem::Update()
+    {
+        ImGui::MenuItem(m_Label.c_str(), m_Shortcut.c_str(), &m_Selected, !m_Selected || !m_DisableOnSelect);
+    }
+
+    // Menu
+    Menu::Menu(const std::string& path)
+        : m_Path(path)
+    {}
+
+    SharedPtr<MenuItem> Menu::AddItem(const char* label, bool selected, bool disableOnSelect /*= false*/)
+    {
+        return AddItem(label, "", selected, disableOnSelect);
+    }
+
+    SharedPtr<MenuItem> Menu::AddItem(const char* label, const char* shortcut /*= ""*/, bool selected /*= false*/, bool disableOnSelect /*= false*/)
+    {
+        return emplace_back(MakeShared<MenuItem>(label, shortcut, selected, disableOnSelect));
+    }
+
+    SharedPtr<MenuItem> Menu::AddToggleItem(const char* label, bool selected)
+    {
+        return AddToggleItem(label, "", selected);
+    }
+
+    SharedPtr<MenuItem> Menu::AddToggleItem(const char* label, const char* shortcut /*= ""*/, bool selected /*= false*/)
+    {
+        return AddItem(label, shortcut, selected, false);
+    }
+
+    SharedPtr<MenuItem> Menu::AddWindowItem(const char* label, bool opened)
+    {
+        return AddWindowItem(label, "", opened);
+    }
+
+    SharedPtr<MenuItem> Menu::AddWindowItem(const char* label, const char* shortcut /*= ""*/, bool opened /*= false*/)
+    {
+        return AddItem(label, shortcut, opened, true);
+    }
+
+    void Menu::Update()
+    {
+        if (!empty())
+        {
+            IMGUI_SCOPE(Menu, m_Path.c_str())
+            {
+                std::ranges::for_each(*this, &MenuItem::Update);
+            }
+        }
+    }
+
+    // Menu Bar
+    MenuBar::MenuBar(bool isMain /*=false*/)
+        : m_IsMain(isMain)
+    {}
+
+    bool MenuBar::Exists(const std::string& path) const
+    {
+        return std::ranges::find(*this, path, &Menu::GetPath) != end();
+    }
+
+    SharedPtr<Menu> MenuBar::Get(const std::string& path) const
+    {
+        if (const auto it = std::ranges::find(*this, path, &Menu::GetPath); it != end())
+        {
+            return *it;
+        }
+
+        return nullptr;
+    }
+
+    SharedPtr<Menu> MenuBar::GetOrCreate(const std::string& path)
+    {
+        if (auto menu = Get(path); menu != nullptr)
+        {
+            return menu;
+        }
+
+        return emplace_back(MakeShared<Menu>(path));
+    }
+
+    void MenuBar::Update()
+    {
+        if (!empty())
+        {
+            if (m_IsMain)
+            {
+                BeginMainMenuBar();
+            }
+            else
+            {
+                BeginMenuBar();
+            }
+
+            std::ranges::for_each(*this, &Menu::Update);
+
+            if (m_IsMain)
+            {
+                EndMainMenuBar();
+            }
+            else
+            {
+                EndMenuBar();
+            }
+        }
+    }
 }

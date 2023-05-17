@@ -106,4 +106,58 @@ namespace ImGui::Utils
 
         constexpr operator bool() const { return true; }
     };
+
+    // Menu Item
+    struct MenuItem final
+    {
+        bool m_Selected{ false };
+        bool m_DisableOnSelect{ false };
+        std::string m_Label{};
+        std::string m_Shortcut{};
+
+        MenuItem() = default;
+        MenuItem(const char* label, bool selected, bool disableOnSelect = false);
+        MenuItem(const char* label, const char* shortcut = "", bool selected = false, bool disableOnSelect = false);
+
+        void Update();
+    };
+
+    // Menu
+    class Menu final : public std::vector<SharedPtr<MenuItem>>
+    {
+    public:
+        Menu(const std::string& path);
+
+        SharedPtr<MenuItem> AddItem(const char* label, bool selected, bool disableOnSelect = false);
+        SharedPtr<MenuItem> AddItem(const char* label, const char* shortcut = "", bool selected = false, bool disableOnSelect = false);
+
+        SharedPtr<MenuItem> AddToggleItem(const char* label, bool selected);
+        SharedPtr<MenuItem> AddToggleItem(const char* label, const char* shortcut = "", bool selected = false);
+
+        SharedPtr<MenuItem> AddWindowItem(const char* label, bool opened);
+        SharedPtr<MenuItem> AddWindowItem(const char* label, const char* shortcut = "", bool opened = false);
+
+        void Update();
+
+        constexpr const std::string& GetPath() const { return m_Path; }
+
+    private:
+        std::string m_Path{};
+    };
+
+    // Menu Bar
+    class MenuBar final : public std::vector<SharedPtr<Menu>>
+    {
+    public:
+        MenuBar(bool isMain = false);
+
+        bool Exists(const std::string& path) const;
+        SharedPtr<Menu> Get(const std::string& path) const;
+        SharedPtr<Menu> GetOrCreate(const std::string& path);
+
+        void Update();
+
+    private:
+        bool m_IsMain{ false };
+    };
 }
