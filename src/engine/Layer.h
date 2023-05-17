@@ -10,4 +10,6 @@ public:
     virtual void Shutdown() {}
 
     virtual void Update() {}
+
+    virtual void RenderImGui(const ImGuiIO& io) {}
 };

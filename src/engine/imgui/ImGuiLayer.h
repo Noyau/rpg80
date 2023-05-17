@@ -11,6 +11,8 @@ public:
 
     void Update() override;
 
+    void RenderImGui(const ImGuiIO& io) override;
+
 private:
-    void Render();
+    void RenderDockSpace(const ImGuiIO& io) const;
 };

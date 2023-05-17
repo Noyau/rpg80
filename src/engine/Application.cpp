@@ -6,9 +6,11 @@
 
 #include "engine/imgui/ImGuiLayer.h"
 
+#ifdef DEPRECATED_IMPL
 #include "gameplay/dialogue/Edge.h"
 #include "gameplay/dialogue/Node.h"
 #include "gameplay/dialogue/Tree.h"
+#endif
 
 // Application
 Application::Application(int argc, char** argv)
@@ -21,6 +23,7 @@ Application::~Application()
     s_Instance = nullptr;
 }
 
+#ifdef DEPRECATED_IMPL
 class AppNodeVisitor : public NodeVisitor
 {
 public:
@@ -45,21 +48,23 @@ public:
         std::cout << std::endl;
     }
 };
+#endif
 
 int Application::Run()
 {
+#ifndef DEPRECATED_IMPL
     if (m_Window = Window::Create(WindowArgs{ 800, 600, "RPG-80" }); m_Window != nullptr)
     {
         m_ImGuiLayer = AddLayer<ImGuiLayer>();
 
         while (!m_Window->ShouldClose())
         {
-            std::ranges::for_each(m_Layers, &Layer::Update);
+            EachLayer(&Layer::Update);
 
             m_Window->Update();
         }
 
-        std::ranges::for_each(m_Layers, &Layer::Shutdown);
+        EachLayer(&Layer::Shutdown);
 
         m_Layers.clear();
 
@@ -67,8 +72,7 @@ int Application::Run()
     }
 
     return EXIT_FAILURE;
-
-#if false
+#else
     // Set console code page to UTF-8 so console known how to interpret string data
     //SetConsoleOutputCP(CP_UTF8);
 

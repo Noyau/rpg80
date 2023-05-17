@@ -21,6 +21,9 @@ public:
     template<typename T, typename... Args>
     SharedPtr<T> AddLayer(Args&&... args);
 
+    template<typename Func>
+    void EachLayer(Func func = {}) const;
+
     Window* GetWindow() const { return m_Window.get(); }
 
 public:
@@ -39,4 +42,10 @@ template <typename T, typename ... Args>
 SharedPtr<T> Application::AddLayer(Args&&... args)
 {
     return static_pointer_cast<T>(AddLayer(MakeShared<T>(std::forward<Args>(args)...)));
+}
+
+template <typename Func>
+void Application::EachLayer(Func func /*= {}*/) const
+{
+    std::ranges::for_each(m_Layers, std::move(func));
 }
