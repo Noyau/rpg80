@@ -29,16 +29,6 @@ void ImGuiLayer::Initialize()
     }
 
     Application::Get().GetWindow()->InitializeImGui();
-
-    // todo - remove this when test are done!
-    const auto menu = m_MenuBar.GetOrCreate("test");
-    m_ShowWindow = menu->AddWindowItem("test1", false);
-    menu->AddWindowItem("test2", "Ctrl+T");
-    menu->AddToggleItem("test3", "Ctrl+U", true);
-    menu->AddToggleItem("test4", true);
-    menu->AddSeparator();
-    m_ShowDemo = menu->AddWindowItem("Show demo");
-    // todo - remove this when test are done!
 }
 
 void ImGuiLayer::Shutdown()
@@ -107,23 +97,18 @@ void ImGuiLayer::RenderImGui(const ImGuiIO& io)
 {
     Layer::RenderImGui(io);
 
-    m_MenuBar.Update();
-
-    // todo - remove this when test are done!
-    if (m_ShowWindow->m_Selected)
+    // todo - remove this when tests are done!
+    IMGUI_SCOPE(MainMenuBar)
     {
-        IMGUI_WINDOW("mlsdkmdksf", &m_ShowWindow->m_Selected)
+        IMGUI_SCOPE(Menu, "File")
         {
-            IMGUI_TREE_NODE("sdklmfjklsdf", true)
-            {
-
-            }
+            ImGui::MenuItem("Show demo", nullptr, &m_ShowDemo);
         }
     }
 
-    if (m_ShowDemo->m_Selected)
+    if (m_ShowDemo)
     {
-        ImGui::ShowDemoWindow(&m_ShowDemo->m_Selected);
+        ImGui::ShowDemoWindow(&m_ShowDemo);
     }
-    // todo - remove this when test are done!
+    // todo - remove this when tests are done!
 }
