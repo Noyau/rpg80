@@ -108,7 +108,7 @@ namespace ImGui::Utils
     };
 
     // Menu Item
-    struct MenuItem final
+    struct MenuItem
     {
         bool m_Selected{ false };
         bool m_DisableOnSelect{ false };
@@ -119,7 +119,17 @@ namespace ImGui::Utils
         MenuItem(const char* label, bool selected, bool disableOnSelect = false);
         MenuItem(const char* label, const char* shortcut = "", bool selected = false, bool disableOnSelect = false);
 
-        void Update();
+        virtual ~MenuItem() = default;
+
+        virtual void Update();
+    };
+
+    // Menu Item Separator
+    struct MenuItemSeparator final : MenuItem
+    {
+        MenuItemSeparator() = default;
+
+        void Update() override;
     };
 
     // Menu
@@ -136,6 +146,8 @@ namespace ImGui::Utils
 
         SharedPtr<MenuItem> AddWindowItem(const char* label, bool opened);
         SharedPtr<MenuItem> AddWindowItem(const char* label, const char* shortcut = "", bool opened = false);
+
+        SharedPtr<MenuItemSeparator> AddSeparator();
 
         void Update();
 

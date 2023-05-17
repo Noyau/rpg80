@@ -164,6 +164,12 @@ namespace ImGui::Utils
         ImGui::MenuItem(m_Label.c_str(), m_Shortcut.c_str(), &m_Selected, !m_Selected || !m_DisableOnSelect);
     }
 
+    // Menu Item Separator
+    void MenuItemSeparator::Update()
+    {
+        Separator();
+    }
+
     // Menu
     Menu::Menu(const std::string& path)
         : m_Path(path)
@@ -197,6 +203,11 @@ namespace ImGui::Utils
     SharedPtr<MenuItem> Menu::AddWindowItem(const char* label, const char* shortcut /*= ""*/, bool opened /*= false*/)
     {
         return AddItem(label, shortcut, opened, true);
+    }
+
+    SharedPtr<MenuItemSeparator> Menu::AddSeparator()
+    {
+        return static_pointer_cast<MenuItemSeparator>(emplace_back(MakeShared<MenuItemSeparator>()));
     }
 
     void Menu::Update()
