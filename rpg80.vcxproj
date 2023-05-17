@@ -178,6 +178,7 @@
     <ClInclude Include="src\gameplay\dialogue\Edge.h" />
     <ClInclude Include="src\gameplay\dialogue\Node.h" />
     <ClInclude Include="src\gameplay\dialogue\Tree.h" />
+    <ClInclude Include="src\gameplay\GameLayer.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <ClCompile Include="src\engine\opengl\GraphicsContext.cpp" />
     <ClCompile Include="src\engine\opengl\GraphicsFramework.cpp" />
     <ClCompile Include="src\engine\Window.cpp" />
+    <ClCompile Include="src\gameplay\GameLayer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
