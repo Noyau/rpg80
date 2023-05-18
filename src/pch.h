@@ -12,6 +12,10 @@
 
 #include <array>
 #include <vector>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
 
 #include <algorithm>
 #include <functional>
@@ -30,6 +34,7 @@
 #include <imgui_impl_opengl3.h>
 
 // Core
+#include "core/Hash.h"
 #include "core/Utils.h"
 #include "core/Format.h"
 #include "core/Memory.h"

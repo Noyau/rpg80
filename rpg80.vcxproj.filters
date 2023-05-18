@@ -69,6 +69,9 @@
     <ClInclude Include="src\gameplay\GameLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\Hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\Application.cpp">

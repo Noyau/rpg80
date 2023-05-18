@@ -166,6 +166,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Hash.h" />
     <ClInclude Include="src\core\Debug.h" />
     <ClInclude Include="src\core\Log.h" />
     <ClInclude Include="src\core\Memory.h" />
