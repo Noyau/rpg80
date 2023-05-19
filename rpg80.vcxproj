@@ -189,9 +189,6 @@
     <ClInclude Include="src\gameplay\components\DialogueComponent.h" />
     <ClInclude Include="src\gameplay\components\IdComponent.h" />
     <ClInclude Include="src\gameplay\components\TextComponent.h" />
-    <ClInclude Include="src\gameplay\dialogue\Edge.h" />
-    <ClInclude Include="src\gameplay\dialogue\DEPRECATED_Node.h" />
-    <ClInclude Include="src\gameplay\dialogue\Tree.h" />
     <ClInclude Include="src\gameplay\GameLayer.h" />
     <ClInclude Include="src\gameplay\questsystem\Node.h" />
     <ClInclude Include="src\gameplay\questsystem\Outcome.h" />
