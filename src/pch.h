@@ -1,6 +1,8 @@
 #pragma once
 
 // Windows
+#define NOMINMAX
+
 #include <Windows.h>
 
 // Standards

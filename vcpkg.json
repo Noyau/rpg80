@@ -4,6 +4,7 @@
     "glfw3",
     "glew",
     "spdlog",
-    "fmt"
+    "fmt",
+    "entt"
   ]
 }
