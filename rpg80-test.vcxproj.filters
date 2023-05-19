@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test\src\pch.cpp" />
+    <ClCompile Include="test\src\rpg80-test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test\src\pch.h" />
+  </ItemGroup>
+</Project>
