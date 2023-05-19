@@ -185,11 +185,17 @@
     <ClInclude Include="src\engine\opengl\GraphicsFramework.h" />
     <ClInclude Include="src\engine\opengl\OpenGL.h" />
     <ClInclude Include="src\engine\Window.h" />
+    <ClInclude Include="src\gameplay\components\CombatComponent.h" />
+    <ClInclude Include="src\gameplay\components\DialogueComponent.h" />
     <ClInclude Include="src\gameplay\components\IdComponent.h" />
+    <ClInclude Include="src\gameplay\components\TextComponent.h" />
     <ClInclude Include="src\gameplay\dialogue\Edge.h" />
-    <ClInclude Include="src\gameplay\dialogue\Node.h" />
+    <ClInclude Include="src\gameplay\dialogue\DEPRECATED_Node.h" />
     <ClInclude Include="src\gameplay\dialogue\Tree.h" />
     <ClInclude Include="src\gameplay\GameLayer.h" />
+    <ClInclude Include="src\gameplay\questsystem\Node.h" />
+    <ClInclude Include="src\gameplay\questsystem\Outcome.h" />
+    <ClInclude Include="src\gameplay\questsystem\Quest.h" />
     <ClInclude Include="src\gameplay\scene\Entity.h" />
     <ClInclude Include="src\gameplay\scene\Scene.h" />
     <ClInclude Include="src\pch.h" />
@@ -203,6 +209,7 @@
     <ClCompile Include="src\engine\opengl\GraphicsFramework.cpp" />
     <ClCompile Include="src\engine\Window.cpp" />
     <ClCompile Include="src\gameplay\GameLayer.cpp" />
+    <ClCompile Include="src\gameplay\questsystem\Quest.cpp" />
     <ClCompile Include="src\gameplay\scene\Scene.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">

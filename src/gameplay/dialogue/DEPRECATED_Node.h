@@ -16,14 +16,14 @@ public:
 #define NODE_VISIT_IMPLEMENTATION() \
     void Display(const NodeVisitor& visitor) const override { visitor.Display(*this); }
 
-// Node
-struct Node
+// DEPRECATED_Node
+struct DEPRECATED_Node
 {
     virtual void Display(const NodeVisitor& visitor) const = 0;
 };
 
 // Narrative Node
-struct NarrativeNode : Node
+struct NarrativeNode : DEPRECATED_Node
 {
     std::string m_Text{};
 
@@ -36,7 +36,7 @@ struct NarrativeNode : Node
 };
 
 // Dialogue Node
-struct DialogueNode : Node
+struct DialogueNode : DEPRECATED_Node
 {
     std::string m_CharacterName{};
     std::string m_CharacterDescription{};
@@ -53,7 +53,7 @@ struct DialogueNode : Node
 };
 
 // Combat Node
-struct CombatNode : Node
+struct CombatNode : DEPRECATED_Node
 {
     std::string m_EnemyName{};
     std::string m_EnemyDescription{};

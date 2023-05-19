@@ -24,7 +24,7 @@
     <ClInclude Include="src\gameplay\dialogue\Edge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gameplay\dialogue\Node.h">
+    <ClInclude Include="src\gameplay\dialogue\DEPRECATED_Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gameplay\dialogue\Tree.h">
@@ -96,6 +96,24 @@
     <ClInclude Include="src\gameplay\components\IdComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\gameplay\questsystem\Quest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameplay\questsystem\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameplay\questsystem\Outcome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameplay\components\TextComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameplay\components\DialogueComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameplay\components\CombatComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\Application.cpp">
@@ -129,6 +147,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\gameplay\scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay\questsystem\Quest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

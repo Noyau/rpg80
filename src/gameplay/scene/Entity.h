@@ -73,5 +73,5 @@ bool Entity::HasComponent() const
 template <typename T>
 void Entity::RemoveComponent()
 {
-    m_Scene->m_Registry.remove<T>();
+    m_Scene->m_Registry.remove<T>(m_Handle);
 }
