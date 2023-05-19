@@ -5,6 +5,9 @@
 #include "gameplay/dialogue/Node.h"
 #include "gameplay/dialogue/Tree.h"
 
+#include "gameplay/scene/Entity.h"
+#include "gameplay/scene/Scene.h"
+
 // Game Node Visitor
 class GameNodeVisitor : public NodeVisitor
 {
